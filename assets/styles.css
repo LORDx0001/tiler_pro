@@ -410,6 +410,7 @@ ul {
     background-color: var(--background-alt);
     border-top: 1px solid var(--border-color);
     padding: 60px 0 30px;
+    /* margin-bottom: 100px; */
 }
 
 .footer-grid {
@@ -742,4 +743,21 @@ ul {
     .footer-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.logo-img {
+    width: auto;
+    height: 60px;
+}
+
+.home-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.home-img > img {
+    width: 100%;
+    height: 100vh;
 }
