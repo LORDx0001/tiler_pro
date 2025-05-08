@@ -10,98 +10,46 @@
             <p>Get in touch for a free quote or to discuss your tiling project</p>
         </div>
     </section>
-
+  
     <!-- Contact Form and Info -->
-    <section class="contact-page">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="{{ form.first_name.id_for_label }}">First name</label>
-                                {{ form.first_name }}
+    <div class="center">
+        <section class="contact-page">
+           
+            <div class="container">
+                <div class="contact">
+                    <div class="contact-form-container">
+                        <h2>Send Us a Message</h2>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="{{ form.first_name.id_for_label }}">First name</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.last_name.id_for_label }}">Last name</label>
+                                    {{ form.last_name }}
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="{{ form.last_name.id_for_label }}">Last name</label>
-                                {{ form.last_name }}
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                {{ form.email }}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.email.id_for_label }}">Email</label>
-                            {{ form.email }}
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.phone.id_for_label }}">Phone</label>
-                            {{ form.phone }}
-                        </div>
-                        <div class="form-group">
-                            <label for="{{ form.message.id_for_label }}">Project details</label>
-                            {{ form.message }}
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
-                </div>
-                
-                <div class="contact-info-container">
-                    <h2>Contact Information</h2>
-                    <div class="contact-info-grid">
-                        <div class="contact-info-item">
-                            <div class="contact-icon phone-icon"></div>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>+44 7123 456789</p>
-                                <p>Monday - Friday: 8am - 6pm</p>
-                                <p>Saturday: 9am - 4pm</p>
+                            <div class="form-group">
+                                <label for="{{ form.phone.id_for_label }}">Phone</label>
+                                {{ form.phone }}
                             </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon email-icon"></div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>info@elitetiling.com</p>
-                                <p>quotes@elitetiling.com</p>
+                            <div class="form-group">
+                                <label for="{{ form.message.id_for_label }}">Project details</label>
+                                {{ form.message }}
                             </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon address-icon"></div>
-                            <div>
-                                <h3>Address</h3>
-                                <p>123 Tile Street</p>
-                                <p>London, UK</p>
-                                <p>SW1A 1AA</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-areas-large">
-                        <h3>Service Areas</h3>
-                        <p>We provide tiling services throughout London and surrounding areas including:</p>
-                        <ul class="areas-list">
-                            <li>Croydon</li>
-                            <li>Bromley</li>
-                            <li>Sutton</li>
-                            <li>Kingston</li>
-                            <li>Richmond</li>
-                            <li>Wandsworth</li>
-                            <li>Merton</li>
-                            <li>Lambeth</li>
-                        </ul>
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     
-    <!-- Map Section (placeholder) -->
-    <section class="map-section">
-        <div class="map-placeholder">
-            <p>Map location of Elite Tiling</p>
-            <!-- In a real implementation, you would embed a Google Map or similar here -->
-        </div>
-    </section>
+
 {% endblock %}
