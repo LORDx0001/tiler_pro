@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Elite Tiling - Professional Tiling Services{% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{% url 'home' %}" class="logo">
+                    <span class="logo-highlight">Elite</span> Tiling
+                </a>
+                
+                <!-- CSS-only mobile menu toggle using checkbox hack -->
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="{% url 'contact' %}" class="btn btn-primary">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message message-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Elite Tiling</h3>
+                    <p>Professional tiling services for residential and commercial properties.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Bathroom Tiling</li>
+                        <li>Kitchen Tiling</li>
+                        <li>Floor Tiling</li>
+                        <li>Wall Tiling</li>
+                        <li>Outdoor Tiling</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Phone: +44 7123 456789</li>
+                        <li>Email: info@elitetiling.com</li>
+                        <li>Address: 123 Tile Street, London, UK</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8am - 6pm</li>
+                        <li>Saturday: 9am - 4pm</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; {% now "Y" %} Elite Tiling. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

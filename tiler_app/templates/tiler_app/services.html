@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - Elite Tiling{% endblock %}
+
+{% block content %}
+    <!-- Services Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Tiling Services</h1>
+            <p>Professional tiling solutions for every space in your home</p>
+        </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="services-list">
+        <div class="container">
+            {% for service in services %}
+            <div class="service-item">
+                {% if service.image %}
+                <div class="service-image">
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                </div>
+                {% endif %}
+                <div class="service-content">
+                    <h2>{{ service.title }}</h2>
+                    <p>{{ service.description }}</p>
+                    
+                    {% if service.title == "Bathroom Tiling" %}
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Waterproof installation for wet areas</li>
+                            <li>Custom patterns and designs</li>
+                            <li>Grout sealing for longevity</li>
+                            <li>Shower niches and custom shelving</li>
+                            <li>Floor-to-ceiling tiling options</li>
+                        </ul>
+                    </div>
+                    {% elif service.title == "Kitchen Tiling" %}
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Heat-resistant options for backsplashes</li>
+                            <li>Easy-clean surfaces for busy kitchens</li>
+                            <li>Decorative borders and feature tiles</li>
+                            <li>Countertop tiling options</li>
+                            <li>Coordinated floor and wall designs</li>
+                        </ul>
+                    </div>
+                    {% elif service.title == "Floor Tiling" %}
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Large format tiles for modern spaces</li>
+                            <li>Underfloor heating compatible installation</li>
+                            <li>Anti-slip options for safety</li>
+                            <li>Durable solutions for high-traffic areas</li>
+                            <li>Seamless indoor-outdoor transitions</li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Professional installation</li>
+                            <li>Quality materials</li>
+                            <li>Custom designs available</li>
+                            <li>Long-lasting results</li>
+                            <li>Competitive pricing</li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="{{ STATIC_URL }}images/bathroom-tiling.jpg" alt="Bathroom Tiling">
+                </div>
+                <div class="service-content">
+                    <h2>Bathroom Tiling</h2>
+                    <p>Complete bathroom tiling solutions including floors, walls, and shower areas. We specialize in creating waterproof, beautiful bathroom spaces that stand the test of time.</p>
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Waterproof installation for wet areas</li>
+                            <li>Custom patterns and designs</li>
+                            <li>Grout sealing for longevity</li>
+                            <li>Shower niches and custom shelving</li>
+                            <li>Floor-to-ceiling tiling options</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="{{ STATIC_URL }}images/kitchen-tiling.jpg" alt="Kitchen Tiling">
+                </div>
+                <div class="service-content">
+                    <h2>Kitchen Tiling</h2>
+                    <p>Enhance your kitchen with backsplashes, countertops, and floor tiling. Our kitchen tiling solutions are designed to be both beautiful and practical for this busy space.</p>
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Heat-resistant options for backsplashes</li>
+                            <li>Easy-clean surfaces for busy kitchens</li>
+                            <li>Decorative borders and feature tiles</li>
+                            <li>Countertop tiling options</li>
+                            <li>Coordinated floor and wall designs</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="{{ STATIC_URL }}images/floor-tiling.jpg" alt="Floor Tiling">
+                </div>
+                <div class="service-content">
+                    <h2>Floor Tiling</h2>
+                    <p>Durable and beautiful floor tiling for any room in your home. From porcelain to natural stone, we provide expert installation of all floor tile types.</p>
+                    <div class="service-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Large format tiles for modern spaces</li>
+                            <li>Underfloor heating compatible installation</li>
+                            <li>Anti-slip options for safety</li>
+                            <li>Durable solutions for high-traffic areas</li>
+                            <li>Seamless indoor-outdoor transitions</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Contact us today for a free consultation and quote.</p>
+            <a href="{% url 'contact' %}" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+{% endblock %}
