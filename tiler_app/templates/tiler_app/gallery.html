@@ -1,34 +1,39 @@
 {% extends 'base.html' %}
-
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
 {% block title %}Our Work - Elite Tiling{% endblock %}
 
 {% block content %}
-    <!-- Gallery Hero -->
-    <section class="page-hero">
+    <!-- Page Banner -->
+    <section class="page-banner">
         <div class="container">
             <h1>Our Work</h1>
-            <p>Browse our portfolio of completed tiling projects</p>
+            <p>Browse through our portfolio of completed tiling projects</p>
         </div>
     </section>
 
-    <!-- Gallery Grid -->
-    <section class="gallery-page">
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
         <div class="container">
-            <div class="gallery-filters">
-                <ul>
-                    <li><a href="{% url 'gallery' %}" class="active">All Projects</a></li>
-                    <li><a href="{% url 'gallery' %}?category=bathroom">Bathrooms</a></li>
-                    <li><a href="{% url 'gallery' %}?category=kitchen">Kitchens</a></li>
-                    <li><a href="{% url 'gallery' %}?category=floor">Floors</a></li>
-                    <li><a href="{% url 'gallery' %}?category=outdoor">Outdoor</a></li>
-                </ul>
+            <div class="filter-buttons" id="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="bathroom">Bathrooms</button>
+                <button class="filter-btn" data-filter="kitchen">Kitchens</button>
+                <button class="filter-btn" data-filter="floor">Floors</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
             </div>
-            
-            <div class="gallery-grid-large">
+        </div>
+    </section>
+
+    <section class="gallery-page mb-5">
+        <div class="container">
+            <div class="gallery-grid">
                 {% for project in projects %}
-                <div class="gallery-item">
+                <div class="gallery-item" data-category="{{ project.category.name }}">
                     <img src="{{ project.image.url }}" alt="{{ project.title }}">
-                    <div class="gallery-item-overlay">
+                    <div class="gallery-overlay">
                         <h3>{{ project.title }}</h3>
                         <p>{{ project.description }}</p>
                         <p class="date">Completed: {{ project.date_completed }}</p>
@@ -36,9 +41,9 @@
                 </div>
                 {% empty %}
                 {% for i in "123456789012" %}
-                <div class="gallery-item">
-                    <img src="{{ STATIC_URL }}images/gallery-{{ i }}.jpg" alt="Tiling project {{ i }}">
-                    <div class="gallery-item-overlay">
+                <div class="gallery-overlay">
+                    <img src="{% static 'images/gallery-'|add:i|add:'.jpg' %}" alt="Tiling project {{ i }}">
+                    <div class="gallery-cta">
                         <h3>Project {{ i }}</h3>
                         <p>Professional tiling work for a client in London.</p>
                         <p class="date">Completed: {% now "F Y" %}</p>
@@ -50,12 +55,29 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <h2>Like What You See?</h2>
-            <p>Contact us today to discuss your tiling project.</p>
-            <a href="{% url 'contact' %}" class="btn btn-primary">Get in Touch</a>
-        </div>
-    </section>
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filterValue = button.getAttribute('data-filter');
+
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                button.classList.add('active');
+
+                // Filter gallery items
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

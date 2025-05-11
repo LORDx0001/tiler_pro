@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
 {% block title %}Our Services - Elite Tiling{% endblock %}
 
 {% block content %}
-    <!-- Services Hero -->
-    <section class="page-hero">
+    <!-- Page Banner -->
+    <section class="page-banner">
         <div class="container">
-            <h1>Our Tiling Services</h1>
-            <p>Professional tiling solutions for every space in your home</p>
+            <h1>Our Services</h1>
+            <p>Professional tiling solutions for every space</p>
         </div>
     </section>
 
-    <!-- Services List -->
     <section class="services-list">
         <div class="container">
             {% for service in services %}
@@ -24,7 +26,7 @@
                 <div class="service-content">
                     <h2>{{ service.title }}</h2>
                     <p>{{ service.description }}</p>
-                    
+
                     {% if service.title == "Bathroom Tiling" %}
                     <div class="service-features">
                         <h3>Features:</h3>
@@ -75,51 +77,11 @@
                 </div>
             </div>
             {% empty %}
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="{% static "images/bathroom-tiling.jpg" %}" alt="Bathroom Tiling">
-                </div>
-                <div class="service-content">
-                    <h2>Bathroom Tiling</h2>
-                    <p>Complete bathroom tiling solutions including floors, walls, and shower areas. We specialize in creating waterproof, beautiful bathroom spaces that stand the test of time.</p>
-                    <div class="service-features">
-                        <h3>Features:</h3>
-                        <ul>
-                            <li>Waterproof installation for wet areas</li>
-                            <li>Custom patterns and designs</li>
-                            <li>Grout sealing for longevity</li>
-                            <li>Shower niches and custom shelving</li>
-                            <li>Floor-to-ceiling tiling options</li>
-                        </ul>
-                    </div>
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
-                </div>
-            </div>
             
+
             <div class="service-item">
                 <div class="service-image">
-                    <img src="{% static "images/kitchen-tiling.jpg" %}" alt="Kitchen Tiling">
-                </div>
-                <div class="service-content">
-                    <h2>Kitchen Tiling</h2>
-                    <p>Enhance your kitchen with backsplashes, countertops, and floor tiling. Our kitchen tiling solutions are designed to be both beautiful and practical for this busy space.</p>
-                    <div class="service-features">
-                        <h3>Features:</h3>
-                        <ul>
-                            <li>Heat-resistant options for backsplashes</li>
-                            <li>Easy-clean surfaces for busy kitchens</li>
-                            <li>Decorative borders and feature tiles</li>
-                            <li>Countertop tiling options</li>
-                            <li>Coordinated floor and wall designs</li>
-                        </ul>
-                    </div>
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
-                </div>
-            </div>
-            
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="{% static "images/floor-tiling.jpg" %}" alt="Floor Tiling">
+                    <img src="{% static 'images/floor-tiling.jpg' %}" alt="Floor Tiling">
                 </div>
                 <div class="service-content">
                     <h2>Floor Tiling</h2>
@@ -141,12 +103,5 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Transform Your Space?</h2>
-            <p>Contact us today for a free consultation and quote.</p>
-            <a href="{% url 'contact' %}" class="btn btn-primary">Get in Touch</a>
-        </div>
-    </section>
+
 {% endblock %}

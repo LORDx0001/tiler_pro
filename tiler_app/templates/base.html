@@ -4,42 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Talipov Pro - Professional Tiling Services{% endblock %}</title>
-    <link rel="stylesheet" href="{% static "styles.css" %} ">
+    <title>Talipov Pro - Professional Tiling Services</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" href="{% static '131.ico' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header>
         <div class="container">
             <div class="header-content">
-                <a href="{% url 'home' %}" class="logo">
-                    <img src="{% static '131.jpg' %}" alt="Talipov Pro Logo" class="logo-img">
-                </a>
-                
-                <!-- CSS-only mobile menu toggle using checkbox hack -->
-                <input type="checkbox" id="menu-toggle" class="menu-toggle">
-                <label for="menu-toggle" class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                
-                <nav class="main-nav">
-                    <ul>
+                <div class="logo">
+                    <div class="logo-text">TALIPOV <span>PRO</span></div>
+                </div>
+                <nav>
+                    <ul id="menu">
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'services' %}">Services</a></li>
-                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                        <li><a href="{% url 'gallery' %}">Our Work</a></li>
                         <li><a href="{% url 'contact' %}">Contact</a></li>
                     </ul>
+                    <button class="mobile-menu-btn" id="mobile-menu">☰</button>
                 </nav>
-                
-                <a href="{% url 'contact' %}" class="formobile btn btn-primary">Get a Quote</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Content Section -->
     <main>
         {% if messages %}
             <div class="messages">
@@ -55,48 +46,46 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Elite Tiling</h3>
-                    <p>Professional tiling services for residential and commercial properties.</p>
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-text">TALIPOV <span>PRO</span></div>
+                    </div>
+                    <p>Professional tiling services for residential and commercial properties. Quality craftsmanship and customer satisfaction guaranteed.</p>
                 </div>
-                
-                <div class="footer-column">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
+                        <li><a href="{% url 'gallery' %}">Our Work</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
                     <h3>Services</h3>
                     <ul>
-                        <li>Bathroom Tiling</li>
-                        <li>Kitchen Tiling</li>
-                        <li>Floor Tiling</li>
-                        <li>Wall Tiling</li>
-                        <li>Outdoor Tiling</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li>Phone: +44 7123 456789</li>
-                        <li>Email: info@elitetiling.com</li>
-                        <li>Address: 123 Tile Street, London, UK</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Hours</h3>
-                    <ul>
-                        <li>Monday - Friday: 8am - 6pm</li>
-                        <li>Saturday: 9am - 4pm</li>
-                        <li>Sunday: Closed</li>
+                        <li><a href="{% url 'services' %}#bathroom">Bathroom Tiling</a></li>
+                        <li><a href="{% url 'services' %}#kitchen">Kitchen Tiling</a></li>
+                        <li><a href="{% url 'services' %}#floor">Floor Tiling</a></li>
+                        <li><a href="{% url 'services' %}#repair">Tile Repair</a></li>
+                        <li><a href="{% url 'services' %}#commercial">Commercial Tiling</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; {% now "Y" %} Elite Tiling. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Talipov Pro. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('show');
+        });
+    </script>
 </body>
 </html>

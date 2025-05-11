@@ -37,11 +37,14 @@ def gallery(request):
 
 def contact(request):
     if request.method == 'POST':
+        print("Working")
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            sender(form.cleaned_data)
-            messages.success(request, 'Your message has been sent. We will contact you soon!')
+            if sender(form.cleaned_data):
+                messages.success(request, 'Your message has been sent. We will contact you soon!')
+            else:
+                messages.error(request, 'Failed to send your message. Please try again later.')
             return redirect('contact')
     else:
         form = ContactForm()

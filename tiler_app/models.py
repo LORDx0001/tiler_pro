@@ -1,22 +1,38 @@
 # models.py
 from django.db import models
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)  
+    
+    def __str__(self):
+        return self.name
+
+
 class Service(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to='services/', blank=True, null=True)
+    icon = models.CharField(max_length=100, blank=True)
     
     def __str__(self):
         return self.title
 
+
 class Project(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to='projects/')
-    date_completed = models.DateField()
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    date_completed = models.DateField(null=True, blank=True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
     
     def __str__(self):
         return self.title
+
 
 class Testimonial(models.Model):
     name = models.CharField(max_length=100)

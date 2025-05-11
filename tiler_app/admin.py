@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Project, Testimonial, ContactMessage
+from .models import Service, Project, Testimonial, ContactMessage, Category
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
@@ -54,3 +54,14 @@ class ContactMessageAdmin(admin.ModelAdmin):
     
     full_name.short_description = 'Name'
     short_message.short_description = 'Message'
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    search_fields = ('name', 'description')
+    
+    def short_description(self, obj):
+        """Return a truncated description for the list view"""
+        return obj.description[:100] + '...' if len(obj.description) > 100 else obj.description
+    
+    short_description.short_description = 'Description'

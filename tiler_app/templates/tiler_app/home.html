@@ -1,7 +1,71 @@
 {% extends 'base.html' %}
 {% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
 
 {% block content %}
-<div class="background-image">
-    <img src="{% static '365066.jpg' %}" alt="Tiling Services Background">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Tiling Services</h1>
+                <p>Quality craftsmanship for your bathroom, kitchen, and floor tiling projects</p>
+                <a href="{% url 'contact' %}" class="btn">Get a Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview Section -->
+    <section class="services-preview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We provide a wide range of professional tiling services</p>
+            </div>
+            <div class="services-grid">
+                {% for service in services %}
+                <div class="service-card">
+                    <div class="service-icon">{{ service.icon }}</div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                </div>
+                {% empty %}
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>General Tiling</h3>
+                    <p>Expert tiling services for all types of surfaces and spaces.</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="services-cta">
+                <a href="{% url 'services' %}" class="btn">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="{% static 'tapilov_pro.jpeg' %}" alt="About Talipov Pro">
+                </div>
+                <div class="about-text">
+                    <h2>About Talipov Pro</h2>
+                    <p>With over 15 years of experience in the tiling industry, Talipov Pro has established itself as a leading provider of high-quality tiling services in the region.</p>
+                    <p>Our team of skilled craftsmen is dedicated to delivering exceptional results on every project, no matter the size or complexity. We take pride in our attention to detail, precision, and commitment to customer satisfaction.</p>
+                    <p>At Talipov Pro, we use only premium materials and the latest techniques to ensure that your tiling project not only looks beautiful but also stands the test of time.</p>
+                    <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('show');
+        });
+    </script> -->
 {% endblock %}
