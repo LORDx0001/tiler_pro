@@ -594,7 +594,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 200px;
+    gap: 20px;
 }
 
 .footer-about {
