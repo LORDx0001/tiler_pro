@@ -6,7 +6,7 @@ from .forms import ContactForm
 import requests
 def home(request):
     services = Service.objects.all()[:3]  # Get first 3 services
-    projects = Project.objects.all().order_by('-date_completed')[:8]  # Get latest 8 projects
+    projects = Project.objects.all().order_by('-created_at')[:3]  # Get latest 8 projects
     testimonials = Testimonial.objects.all()[:3]  # Get 3 testimonials
     
     # Handle contact form
