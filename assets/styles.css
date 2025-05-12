@@ -373,14 +373,34 @@ nav ul li a.active {
     transform: scale(1.1);
 }
 
-
-
 .gallery-cta {
     text-align: center;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
+/* Скрываем второй файл по умолчанию */
+.gallery-item .file2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Показываем второй файл при наведении */
+.gallery-item:hover .ottiki.file2 {
+    opacity: 1;
+}
+
+/* Скрываем первый файл при наведении */
+.gallery-item:hover .file1 {
+    opacity: 0;
+}
+
 
 /* Gallery Full Page */
 .gallery-filters {

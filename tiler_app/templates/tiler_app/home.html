@@ -72,7 +72,20 @@
             <div class="gallery-grid">
                 {% for project in projects %}
                 <div class="gallery-item" data-category="{{ project.category.name }}">
-                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    {% if project.file_is_img %}
+                        <img class="ottiki file1" src="{{ project.file.url }}" alt="{{ project.title }}">
+                    {% else %}
+                        <video class="ottiki file1" autoplay loop muted>
+                            <source src="{{ project.file.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+                    {% if project.file2_is_img %}
+                        <img class="ottiki file2" src="{{ project.file2.url }}" alt="{{ project.title }}">
+                    {% else %}
+                        <video class="ottiki file2" autoplay loop muted>
+                            <source src="{{ project.file2.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
                     <div class="gallery-overlay">
                         <h3>{{ project.title }}</h3>
                         <p>{{ project.description }}</p>
