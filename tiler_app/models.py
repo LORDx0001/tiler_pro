@@ -23,10 +23,13 @@ class Project(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    # image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    file = models.FileField(upload_to='projects/', blank=True, null=True)
+    file2 = models.FileField(upload_to='projects/', blank=True, null=True)
     date_completed = models.DateField(null=True, blank=True) 
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    file_is_img = models.BooleanField(default=True)
+    file2_is_img = models.BooleanField(default=True)
     class Meta:
         ordering = ['-created_at']
     
