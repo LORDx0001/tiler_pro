@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +13,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'site.webmanifest' %}">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selects = document.querySelectorAll('#languageSelect, #mobileLanguageSelect')
+            selects.forEach(select => {
+                select.addEventListener('change', function () {
+                    const selectedLanguage = this.value
+                    if (selectedLanguage) {
+                        document.cookie = `user_lang=${selectedLanguage}; path=/; max-age=31536000`
+                        location.reload()
+                    }
+                });
+            });
+        });
+    </script>
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -27,6 +44,23 @@
                         <li><a href="{% url 'services' %}">Services</a></li>
                         <li><a href="{% url 'gallery' %}">Our Work</a></li>
                         <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <div class="lang-search">
+                            <!-- <img src="{% static 'base/images/y-search.png' %}" alt="Search"> -->
+                            <div>
+                                <img src="{% static 'base/images/y-globe.png' %}" alt="Language">
+                                <select name="language" id="languageSelect">
+                                    {% get_current_language as CURRENT_LANGUAGE %}
+                                    {% get_available_languages as AVAILABLE_LANGUAGES %}
+                                    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <option {% if language.code == CURRENT_LANGUAGE %} selected {% endif %}
+                                                                                           style="background-color: transparent"
+                                                                                           value="{{ language.code }}">{{ language.code }}</option>
+                                    {% endfor %}
+                                </select>
+                
+                            </div>
+                        </div>
                     </ul>
                     <button class="mobile-menu-btn" id="mobile-menu">☰</button>
                 </nav>
