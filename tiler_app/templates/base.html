@@ -118,6 +118,16 @@
             </div>
         </div>
     </footer>
+    {% block scripts %}
+<script>
+document.getElementById("languageSelect").addEventListener("change", function() {
+    let selectedLang = this.value;
+    document.cookie = `user_lang=${selectedLang}; path=/`;  // Устанавливаем куки
+    location.reload();  // Перезагружаем страницу, чтобы применить язык
+});
+</script>
+{% endblock %}
+
 
     <script>
         // Mobile menu toggle

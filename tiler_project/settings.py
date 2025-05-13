@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-your-secret-key-here'
@@ -64,7 +66,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
@@ -74,13 +76,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]  # Ensure 'static' directory is referenced
 
-USE_I18N = True
-USE_L10N = True
+
 LANGUAGES = [
     ('en', 'English'),
     ('ru', 'Russian'),
     ('uz', 'Uzbek'),
 ]
+
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
