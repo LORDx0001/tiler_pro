@@ -5,41 +5,41 @@
 </head>
 
 {% block content %}
-    <!-- Hero Section -->
+    <!-- Главная секция -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Professional Tiling Services</h1>
-                <p>Quality craftsmanship for your bathroom, kitchen, and floor tiling projects</p>
-                <a href="{% url 'contact' %}" class="btn">Get a Free Quote</a>
+                <h1>Профессиональные услуги по укладке плитки</h1>
+                <p>Качественная работа для вашего санузла, кухни и пола</p>
+                <a href="{% url 'contact' %}" class="btn">Получить бесплатную консультацию</a>
             </div>
         </div>
     </section>
 
-
+    <!-- О компании -->
     <section class="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="{% static 'tapilov_pro.jpeg' %}" alt="About Talipov Pro">
+                    <img src="{% static 'tapilov_pro.jpeg' %}" alt="О компании Talipov Pro">
                 </div>
                 <div class="about-text">
-                    <h2>About Talipov Pro</h2>
-                    <p>With over 15 years of experience in the tiling industry, Talipov Pro has established itself as a leading provider of high-quality tiling services in the region.</p>
-                    <p>Our team of skilled craftsmen is dedicated to delivering exceptional results on every project, no matter the size or complexity. We take pride in our attention to detail, precision, and commitment to customer satisfaction.</p>
-                    <p>At Talipov Pro, we use only premium materials and the latest techniques to ensure that your tiling project not only looks beautiful but also stands the test of time.</p>
-                    <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+                    <h2>О компании Talipov Pro</h2>
+                    <p>С более чем 15-летним опытом в плиточной отрасли, Talipov Pro зарекомендовала себя как ведущий поставщик качественных услуг по укладке плитки в регионе.</p>
+                    <p>Наша команда квалифицированных мастеров гарантирует отличный результат в каждом проекте — независимо от его сложности. Мы гордимся вниманием к деталям, точностью и ориентацией на клиента.</p>
+                    <p>В Talipov Pro мы используем только лучшие материалы и современные технологии, чтобы ваша плитка была не только красивой, но и долговечной.</p>
+                    <a href="{% url 'contact' %}" class="btn">Связаться с нами</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Preview Section -->
+    <!-- Превью услуг -->
     <section class="services-preview">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
-                <p>We provide a wide range of professional tiling services</p>
+                <h2>Наши услуги</h2>
+                <p>Мы предлагаем широкий спектр профессиональных услуг по укладке плитки</p>
             </div>
             <div class="services-grid">
                 {% for service in services %}
@@ -51,23 +51,23 @@
                 {% empty %}
                 <div class="service-card">
                     <div class="service-icon">🛠️</div>
-                    <h3>General Tiling</h3>
-                    <p>Expert tiling services for all types of surfaces and spaces.</p>
+                    <h3>Общая укладка плитки</h3>
+                    <p>Профессиональная укладка плитки на любые поверхности и в любых помещениях.</p>
                 </div>
                 {% endfor %}
             </div>
             <div class="services-cta">
-                <a href="{% url 'services' %}" class="btn">View All Services</a>
+                <a href="{% url 'services' %}" class="btn">Посмотреть все услуги</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Галерея работ -->
     <section class="gallery-page mb-5">
         <div class="container">
             <div class="section-title">
-                <h2>Our Works</h2>
-                <p>Browse through our portfolio of completed tiling projects</p>
+                <h2>Наши работы</h2>
+                <p>Посмотрите нашу подборку завершённых проектов по укладке плитки</p>
             </div>
             <div class="gallery-grid">
                 {% for project in projects %}
@@ -89,71 +89,62 @@
                     <div class="gallery-overlay">
                         <h3>{{ project.title }}</h3>
                         <p>{{ project.description }}</p>
-                        <p class="date">Completed: {{ project.date_completed }}</p>
+                        <p class="date">Завершено: {{ project.date_completed }}</p>
                     </div>
                 </div>
                 {% empty %}
                 {% for i in "123456789012" %}
                 <div class="gallery-overlay">
-                    <img src="{% static 'images/gallery-'|add:i|add:'.jpg' %}" alt="Tiling project {{ i }}">
+                    <img src="{% static 'images/gallery-'|add:i|add:'.jpg' %}" alt="Проект {{ i }}">
                     <div class="gallery-cta">
-                        <h3>Project {{ i }}</h3>
-                        <p>Professional tiling work for a client in London.</p>
-                        <p class="date">Completed: {% now "F Y" %}</p>
+                        <h3>Проект {{ i }}</h3>
+                        <p>Профессиональная укладка плитки для клиента в Лондоне.</p>
+                        <p class="date">Завершено: {% now "F Y" %}</p>
                     </div>
                 </div>
                 {% endfor %}
                 {% endfor %}
-                
             </div>
             <div class="gallery-cta">
-                <a href="{% url 'gallery' %}" class="btn">Our Works</a>
+                <a href="{% url 'gallery' %}" class="btn">Все работы</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Контактная форма -->
     <section class="contact-section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
+                    <h2>Отправьте нам сообщение</h2>
                     <form method="post" action="" id="contactForm">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="{{ form.first_name.id_for_label }}">First name</label>
+                                <label for="{{ form.first_name.id_for_label }}">Имя</label>
                                 {{ form.first_name }}
                             </div>
                             <div class="form-group">
-                                <label for="{{ form.last_name.id_for_label }}">Last name</label>
+                                <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
                                 {{ form.last_name }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            <label for="{{ form.email.id_for_label }}">Эл. почта</label>
                             {{ form.email }}
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.phone.id_for_label }}">Phone</label>
+                            <label for="{{ form.phone.id_for_label }}">Телефон</label>
                             {{ form.phone }}
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.message.id_for_label }}">Project details</label>
+                            <label for="{{ form.message.id_for_label }}">Описание проекта</label>
                             {{ form.message }}
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full">Отправить</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <!-- <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('show');
-        });
-    </script> -->
 {% endblock %}

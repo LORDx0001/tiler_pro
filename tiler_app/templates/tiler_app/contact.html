@@ -3,48 +3,48 @@
 <head>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-{% block title %}Contact Us - Elite Tiling{% endblock %}
+{% block title %}Связаться с нами - Elite Tiling{% endblock %}
 
 {% block content %}
-    <!-- Page Banner -->
+    <!-- Баннер страницы -->
     <section class="page-banner">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Get in touch for a free consultation and quote</p>
+            <h1>Связаться с нами</h1>
+            <p>Свяжитесь с нами для бесплатной консультации и расчёта стоимости</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Секция контактов -->
     <section class="contact-section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
+                    <h2>Отправьте нам сообщение</h2>
                     <form method="post" action="" id="contactForm">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="{{ form.first_name.id_for_label }}">First name</label>
+                                <label for="{{ form.first_name.id_for_label }}">Имя</label>
                                 {{ form.first_name }}
                             </div>
                             <div class="form-group">
-                                <label for="{{ form.last_name.id_for_label }}">Last name</label>
+                                <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
                                 {{ form.last_name }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            <label for="{{ form.email.id_for_label }}">Электронная почта</label>
                             {{ form.email }}
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.phone.id_for_label }}">Phone</label>
+                            <label for="{{ form.phone.id_for_label }}">Телефон</label>
                             {{ form.phone }}
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.message.id_for_label }}">Project details</label>
+                            <label for="{{ form.message.id_for_label }}">Детали проекта</label>
                             {{ form.message }}
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full">Отправить сообщение</button>
                     </form>
                 </div>
             </div>
@@ -52,10 +52,9 @@
     </section>
 
     <script>
-        // Form submission
+        // Обработка отправки формы
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Here you would typically send the form data to a server
-            alert('Thank you for your message! We will get back to you soon.');
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
         });
     </script>
 {% endblock %}

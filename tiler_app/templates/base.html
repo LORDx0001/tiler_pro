@@ -2,11 +2,11 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talipov Pro - Professional Tiling Services</title>
+    <title>Talipov Pro - Профессиональная укладка плитки</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
@@ -40,27 +40,10 @@
                 </div>
                 <nav>
                     <ul id="menu">
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'services' %}">Services</a></li>
-                        <li><a href="{% url 'gallery' %}">Our Work</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
-                        <div class="lang-search">
-                            <!-- <img src="{% static 'base/images/y-search.png' %}" alt="Search"> -->
-                            <div>
-                                <img src="{% static 'base/images/y-globe.png' %}" alt="Language">
-                                <select name="language" id="languageSelect">
-                                    {% get_current_language as CURRENT_LANGUAGE %}
-                                    {% get_available_languages as AVAILABLE_LANGUAGES %}
-                                    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-                                    {% for language in languages %}
-                                        <option {% if language.code == CURRENT_LANGUAGE %} selected {% endif %}
-                                                                                           style="background-color: transparent"
-                                                                                           value="{{ language.code }}">{{ language.code }}</option>
-                                    {% endfor %}
-                                </select>
-                
-                            </div>
-                        </div>
+                        <li><a href="{% url 'home' %}">Главная</a></li>
+                        <li><a href="{% url 'services' %}">Услуги</a></li>
+                        <li><a href="{% url 'gallery' %}">Наши работы</a></li>
+                        <li><a href="{% url 'contact' %}">Контакты</a></li>
                     </ul>
                     <button class="mobile-menu-btn" id="mobile-menu">☰</button>
                 </nav>
@@ -91,43 +74,43 @@
                     <div class="footer-logo">
                         <div class="logo-text">TALIPOV <span>PRO</span></div>
                     </div>
-                    <p>Professional tiling services for residential and commercial properties. Quality craftsmanship and customer satisfaction guaranteed.</p>
+                    <p>Профессиональные услуги по укладке плитки для жилых и коммерческих объектов. Гарантированное качество и удовлетворение клиентов.</p>
                 </div>
                 <div class="footer-links">
-                    <h3>Quick Links</h3>
+                    <h3>Быстрые ссылки</h3>
                     <ul>
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'services' %}">Services</a></li>
-                        <li><a href="{% url 'gallery' %}">Our Work</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'home' %}">Главная</a></li>
+                        <li><a href="{% url 'services' %}">Услуги</a></li>
+                        <li><a href="{% url 'gallery' %}">Наши работы</a></li>
+                        <li><a href="{% url 'contact' %}">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h3>Services</h3>
+                    <h3>Услуги</h3>
                     <ul>
-                        <li><a href="{% url 'services' %}#bathroom">Bathroom Tiling</a></li>
-                        <li><a href="{% url 'services' %}#kitchen">Kitchen Tiling</a></li>
-                        <li><a href="{% url 'services' %}#floor">Floor Tiling</a></li>
-                        <li><a href="{% url 'services' %}#repair">Tile Repair</a></li>
-                        <li><a href="{% url 'services' %}#commercial">Commercial Tiling</a></li>
+                        <li><a href="{% url 'services' %}#bathroom">Укладка плитки в ванной</a></li>
+                        <li><a href="{% url 'services' %}#kitchen">Укладка плитки на кухне</a></li>
+                        <li><a href="{% url 'services' %}#floor">Укладка напольной плитки</a></li>
+                        <li><a href="{% url 'services' %}#repair">Ремонт плитки</a></li>
+                        <li><a href="{% url 'services' %}#commercial">Коммерческая укладка плитки</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Talipov Pro. All Rights Reserved.</p>
+                <p>&copy; 2025 Talipov Pro. Все права защищены.</p>
             </div>
         </div>
     </footer>
+    
     {% block scripts %}
-<script>
-document.getElementById("languageSelect").addEventListener("change", function() {
-    let selectedLang = this.value;
-    document.cookie = `user_lang=${selectedLang}; path=/`;  // Устанавливаем куки
-    location.reload();  // Перезагружаем страницу, чтобы применить язык
-});
-</script>
-{% endblock %}
-
+    <script>
+    document.getElementById("languageSelect").addEventListener("change", function() {
+        let selectedLang = this.value;
+        document.cookie = `user_lang=${selectedLang}; path=/`;
+        location.reload();
+    });
+    </script>
+    {% endblock %}
 
     <script>
         // Mobile menu toggle

@@ -3,14 +3,14 @@
 <head>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-{% block title %}Our Services - Elite Tiling{% endblock %}
+{% block title %}Наши услуги - Elite Tiling{% endblock %}
 
 {% block content %}
-    <!-- Page Banner -->
+    <!-- Баннер страницы -->
     <section class="page-banner">
         <div class="container">
-            <h1>Our Services</h1>
-            <p>Professional tiling solutions for every space</p>
+            <h1>Наши услуги</h1>
+            <p>Профессиональные решения по укладке плитки для любых помещений</p>
         </div>
     </section>
 
@@ -29,79 +29,75 @@
 
                     {% if service.title == "Bathroom Tiling" %}
                     <div class="service-features">
-                        <h3>Features:</h3>
+                        <h3>Особенности:</h3>
                         <ul>
-                            <li>Waterproof installation for wet areas</li>
-                            <li>Custom patterns and designs</li>
-                            <li>Grout sealing for longevity</li>
-                            <li>Shower niches and custom shelving</li>
-                            <li>Floor-to-ceiling tiling options</li>
+                            <li>Влагостойкая укладка для влажных зон</li>
+                            <li>Индивидуальные узоры и дизайн</li>
+                            <li>Герметизация швов для долговечности</li>
+                            <li>Ниши для душа и полки на заказ</li>
+                            <li>Плитка от пола до потолка</li>
                         </ul>
                     </div>
                     {% elif service.title == "Kitchen Tiling" %}
                     <div class="service-features">
-                        <h3>Features:</h3>
+                        <h3>Особенности:</h3>
                         <ul>
-                            <li>Heat-resistant options for backsplashes</li>
-                            <li>Easy-clean surfaces for busy kitchens</li>
-                            <li>Decorative borders and feature tiles</li>
-                            <li>Countertop tiling options</li>
-                            <li>Coordinated floor and wall designs</li>
+                            <li>Жаростойкие решения для фартуков</li>
+                            <li>Легко очищаемые поверхности</li>
+                            <li>Декоративные бордюры и акцентная плитка</li>
+                            <li>Варианты укладки на столешницы</li>
+                            <li>Координированный дизайн пола и стен</li>
                         </ul>
                     </div>
                     {% elif service.title == "Floor Tiling" %}
                     <div class="service-features">
-                        <h3>Features:</h3>
+                        <h3>Особенности:</h3>
                         <ul>
-                            <li>Large format tiles for modern spaces</li>
-                            <li>Underfloor heating compatible installation</li>
-                            <li>Anti-slip options for safety</li>
-                            <li>Durable solutions for high-traffic areas</li>
-                            <li>Seamless indoor-outdoor transitions</li>
+                            <li>Плитка большого формата для современных интерьеров</li>
+                            <li>Совместимость с тёплыми полами</li>
+                            <li>Противоскользящие варианты для безопасности</li>
+                            <li>Износостойкость для зон с высокой проходимостью</li>
+                            <li>Плавные переходы между внутренними и наружными зонами</li>
                         </ul>
                     </div>
                     {% else %}
                     <div class="service-features">
-                        <h3>Features:</h3>
+                        <h3>Особенности:</h3>
                         <ul>
-                            <li>Professional installation</li>
-                            <li>Quality materials</li>
-                            <li>Custom designs available</li>
-                            <li>Long-lasting results</li>
-                            <li>Competitive pricing</li>
+                            <li>Профессиональная укладка</li>
+                            <li>Качественные материалы</li>
+                            <li>Индивидуальный дизайн</li>
+                            <li>Долговечный результат</li>
+                            <li>Конкурентные цены</li>
                         </ul>
                     </div>
                     {% endif %}
                     
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Запросить расчёт</a>
                 </div>
             </div>
             {% empty %}
-            
-
             <div class="service-item">
                 <div class="service-image">
-                    <img src="{% static 'images/floor-tiling.jpg' %}" alt="Floor Tiling">
+                    <img src="{% static 'images/floor-tiling.jpg' %}" alt="Укладка плитки на пол">
                 </div>
                 <div class="service-content">
-                    <h2>Floor Tiling</h2>
-                    <p>Durable and beautiful floor tiling for any room in your home. From porcelain to natural stone, we provide expert installation of all floor tile types.</p>
+                    <h2>Укладка плитки на пол</h2>
+                    <p>Прочная и красивая напольная плитка для любого помещения в доме. От керамогранита до натурального камня — профессиональная укладка любых видов плитки.</p>
                     <div class="service-features">
-                        <h3>Features:</h3>
+                        <h3>Особенности:</h3>
                         <ul>
-                            <li>Large format tiles for modern spaces</li>
-                            <li>Underfloor heating compatible installation</li>
-                            <li>Anti-slip options for safety</li>
-                            <li>Durable solutions for high-traffic areas</li>
-                            <li>Seamless indoor-outdoor transitions</li>
+                            <li>Плитка большого формата для современного интерьера</li>
+                            <li>Совместимость с тёплыми полами</li>
+                            <li>Противоскользящие покрытия</li>
+                            <li>Износостойкость в местах с высокой проходимостью</li>
+                            <li>Плавные переходы между зонами</li>
                         </ul>
                     </div>
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Request a Quote</a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Запросить расчёт</a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
-
-
 {% endblock %}
